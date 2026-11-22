@@ -1,0 +1,11 @@
+{
+  // Cloudflare Workers with static assets: serves the built site from ./dist (no Worker code needed).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "toolnest",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    // Unknown paths fall back to index.html so the React router can handle them.
+    "not_found_handling": "single-page-application"
+  }
+}
