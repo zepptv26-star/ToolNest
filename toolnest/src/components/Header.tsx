@@ -21,7 +21,7 @@ export function Header() {
     `rounded-md px-3 py-2 text-sm font-medium ${isActive ? 'text-teal-dark dark:text-teal' : 'text-ink hover:text-teal-dark dark:text-slate-200'}`;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-white/95 backdrop-blur dark:border-slate-700 dark:bg-[#0E1A2B]/95">
+    <header className="sticky top-0 z-40 border-b border-line bg-white dark:border-slate-700 dark:bg-[#0E1A2B]">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:rounded focus:bg-white focus:p-2">Skip to content</a>
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4">
         <Logo />

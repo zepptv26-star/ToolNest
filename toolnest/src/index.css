@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  html { scroll-behavior: smooth; }
   body { @apply bg-surface text-ink antialiased dark:bg-[#0E1A2B] dark:text-slate-100; }
   :focus-visible { @apply outline-2 outline-offset-2 outline-teal; }
 }

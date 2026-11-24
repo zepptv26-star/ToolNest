@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { AdSlot } from './AdSlot';
 import { ConsentBanner } from './ConsentBanner';
+import { ErrorBoundary } from './ErrorBoundary';
 import { useConsent } from '../hooks/useConsent';
 import { trackPageView } from '../lib/thirdParty';
 
 export function Layout() {
   const { pathname } = useLocation();
   const { status } = useConsent();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  useLayoutEffect(() => { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }, [pathname]);
   useEffect(() => {
     if (status !== 'granted') return;
     // Wait a tick so the page's own title is set before reporting the view.
@@ -21,7 +22,9 @@ export function Layout() {
     <div className="flex min-h-screen flex-col">
       <Header />
       <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-4 py-8">
-        <Outlet />
+        <ErrorBoundary key={pathname}>
+          <Outlet />
+        </ErrorBoundary>
         <AdSlot placement="footer-banner" className="mt-10" />
       </main>
       <Footer />
